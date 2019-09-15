@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skills-service-deployment
+  labels:
+    service: skills-service
+    tier: backend
+spec:
+  replicas: 3
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      service: skills-service
+      tier: backend
+  template:
+    metadata:
+      labels:
+        service: skills-service
+        tier: backend
+    spec:
+      containers:
+        - name: skills-service
+          image: miketrout/skills-service
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /api/skills
+              port: 50002
+            initialDelaySeconds: 5
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /api/skills
+              port: 50002
+            initialDelaySeconds: 5
+            periodSeconds: 15
+          resources:
+            requests:
+              memory: 10Mi
+              cpu: 10m
+            limits:
+              memory: 20Mi
+              cpu: 50m
+          ports:
+            - containerPort: 50002
