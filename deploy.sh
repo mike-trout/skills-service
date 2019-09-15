@@ -14,8 +14,7 @@ gcloud components update kubectl
 
 gcloud auth activate-service-account --key-file gcloud-service-account-secret.json
 gcloud container clusters get-credentials gke-cluster --zone us-central1-a --project www-miketrout-dev
-kubectl apply -f skills-service-deployment.yaml \
-  -f skills-service-service-service.yaml
+kubectl apply -f skills-service-deployment.yaml -f skills-service-service.yaml
 
 # https://github.com/kubernetes/kubernetes/issues/27081#issuecomment-238078103
 kubectl patch deployment skills-service-deployment \
