@@ -18,7 +18,7 @@ type App struct {
 
 // Initialise - Initialise the application
 func (a *App) Initialise() {
-	a.Router = mux.NewRouter()
+	a.Router = mux.NewRouter().StrictSlash(true)
 	a.initialiseRoutes()
 }
 
@@ -46,7 +46,7 @@ func (a *App) getSkill(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, err := strconv.Atoi(vars["id"])
 	if err != nil {
-		respondWithError(w, http.StatusBadRequest, "Invalid product ID")
+		respondWithError(w, http.StatusBadRequest, "Invalid skill ID")
 		return
 	}
 
