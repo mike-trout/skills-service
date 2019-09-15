@@ -33,10 +33,10 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /app/skills-service /app/
 
 # Set the app listen port.
-ENV APP_ADDR ":8080"
+ENV APP_ADDR ":50002"
 
 # Expose the app listen port.
-EXPOSE 8080
+EXPOSE 50002
 
 # Perform any further action as an unprivileged user.
 USER appuser
