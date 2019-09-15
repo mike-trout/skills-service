@@ -8,8 +8,9 @@ branches:
 jobs:
   include:
     - stage: test
-      language: golang
+      language: go
       script:
+      - go version
       - go mod download
       - go test --test.v
     - stage: build docker image
