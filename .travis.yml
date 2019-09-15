@@ -1,6 +1,4 @@
 ---
-language: minimal
-
 branches:
   only:
   - master
@@ -9,6 +7,10 @@ jobs:
   include:
     - stage: test
       language: go
+      go:
+      - "1.13"
+      env:
+      - GO111MODULE=on
       script:
       - go version
       - go mod download
@@ -16,10 +18,9 @@ jobs:
     - stage: build docker image
       language: minimal
       env:
-        global:
-        - CLOUDSDK_CORE_DISABLE_PROMPTS=1 # Do not prompt for user input when using any SDK methods.
-        - DOCKER_HUB_USERNAME=miketrout
-        - secure: "Bcnx5YT48rW47K3HJ5+O3lI8tN5evVm0Lkwp+FKcmN7PrKLQTKgbLcOqTBqhDViDSjGyr7fvOhCM/P59Rzk6JEvT5UqYNaDiESSSUtLAoNJbF/ZdPuFTaW1eL39UMRWUv21k+kP2BUyGW4RWwIt9x+QoUnXrMj8vljawwZkl3qJ0f9EKeLuSvvBX6YDt8kzUP8Wc06LBaZQkQ4Q+GWTIXjzTMu6GExcDpDGKT2imSMrNDhX/Ke64euq0Ix06Tya17T/9l9tPMdsA/5RRvM5OhEEaQ5QPQ3YPhi0eOwZW9oqk5sxXQ49NuG0tu5W/BiB6O7TJhj8LsmOJFYS4BwRAlSv4W4zf2imyaz0Wl4e+Ew3WeDmFYa9F5rB4noMhha+Sh8VcR0L1h67PtGPJGMEhGpcGnvzpB0yo3MOn7BCE2WSJ7SRLotBrWvMAkuPbXe2X1ptzXOY7E6KKmYtwhLmVOSXT1eBo1r60XcloLTfiyfJ6nDm61TTSNc5vZlCP13cq20iDxd6Wgs8tkWzL5jTYHBNw+4vV8O8/85rWVT53f8h1EieXLvm5RIeuk9ixbqOJ10cGt1YrFRpSzgp2b2QOsuXGiuUtQQs/X8C1DRqbjgeBwi+3X/vCaEqtcPza/qRWlPORZEhYs51+m5bPdqNJ74kd5/2snDcMKLqiPnuXq5U="
+      - CLOUDSDK_CORE_DISABLE_PROMPTS=1 # Do not prompt for user input when using any SDK methods.
+      - DOCKER_HUB_USERNAME=miketrout
+      - secure: "Bcnx5YT48rW47K3HJ5+O3lI8tN5evVm0Lkwp+FKcmN7PrKLQTKgbLcOqTBqhDViDSjGyr7fvOhCM/P59Rzk6JEvT5UqYNaDiESSSUtLAoNJbF/ZdPuFTaW1eL39UMRWUv21k+kP2BUyGW4RWwIt9x+QoUnXrMj8vljawwZkl3qJ0f9EKeLuSvvBX6YDt8kzUP8Wc06LBaZQkQ4Q+GWTIXjzTMu6GExcDpDGKT2imSMrNDhX/Ke64euq0Ix06Tya17T/9l9tPMdsA/5RRvM5OhEEaQ5QPQ3YPhi0eOwZW9oqk5sxXQ49NuG0tu5W/BiB6O7TJhj8LsmOJFYS4BwRAlSv4W4zf2imyaz0Wl4e+Ew3WeDmFYa9F5rB4noMhha+Sh8VcR0L1h67PtGPJGMEhGpcGnvzpB0yo3MOn7BCE2WSJ7SRLotBrWvMAkuPbXe2X1ptzXOY7E6KKmYtwhLmVOSXT1eBo1r60XcloLTfiyfJ6nDm61TTSNc5vZlCP13cq20iDxd6Wgs8tkWzL5jTYHBNw+4vV8O8/85rWVT53f8h1EieXLvm5RIeuk9ixbqOJ10cGt1YrFRpSzgp2b2QOsuXGiuUtQQs/X8C1DRqbjgeBwi+3X/vCaEqtcPza/qRWlPORZEhYs51+m5bPdqNJ74kd5/2snDcMKLqiPnuXq5U="
       services:
       - docker
       addons:
