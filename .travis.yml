@@ -6,6 +6,7 @@ branches:
 jobs:
   include:
     - stage: test
+      name: "Unit Tests"
       language: go
       go:
       - "1.13"
@@ -15,7 +16,8 @@ jobs:
       - go version
       - go mod download
       - go test --test.v
-    - stage: build docker image
+    - stage: build
+      name: "Build Docker Image"
       language: minimal
       env:
       - CLOUDSDK_CORE_DISABLE_PROMPTS=1 # Do not prompt for user input when using any SDK methods.
@@ -34,10 +36,8 @@ jobs:
       - docker build -t miketrout/skills-service .
       - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
       - docker push miketrout/skills-service
-
-deploy:
-  provider: script
-  script: bash deploy.sh
-  skip_cleanup: true
-  on:
-    branch: master
+    - stage: deploy
+      name: "Deploy to GCP"
+      language: minimal
+      script:
+      - ./deploy.sh
