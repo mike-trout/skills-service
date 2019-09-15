@@ -20,7 +20,7 @@ func TestGetAllSkills(t *testing.T) {
 	jsonBytes, _ := json.Marshal(Skills)
 	json := strings.TrimSpace(string(jsonBytes))
 	if body != json {
-		t.Errorf("Expected %s. Got %s", body, json)
+		t.Errorf("Expected %s. Got %s", json, body)
 	}
 }
 
@@ -34,14 +34,26 @@ func TestGetSingleSkill(t *testing.T) {
 	jsonBytes, _ := json.Marshal(Skills[0])
 	json := strings.TrimSpace(string(jsonBytes))
 	if body != json {
-		t.Fatalf("Expected %s. Got %s", body, json)
+		t.Fatalf("Expected %s. Got %s", json, body)
+	}
+}
+
+func TestGetNonExistentSkill(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/api/skills/0", nil)
+	resp := executeRequest(req)
+
+	checkResponseCode(t, http.StatusInternalServerError, resp.Code)
+
+	json := `{"error":"Skill not found"}`
+	if body := resp.Body.String(); body != json {
+		t.Fatalf("Expected %s. Got %s", json, body)
 	}
 }
 
 func executeRequest(req *http.Request) *httptest.ResponseRecorder {
-	rr := httptest.NewRecorder()
 	a := App{}
 	a.Initialise()
+	rr := httptest.NewRecorder()
 	a.Router.ServeHTTP(rr, req)
 	return rr
 }
