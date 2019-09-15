@@ -22,11 +22,18 @@ addons:
 before_install:
 - openssl aes-256-cbc -K $encrypted_682c34250dd3_key -iv $encrypted_682c34250dd3_iv -in gcloud-service-account-secret.json.enc -out gcloud-service-account-secret.json -d
 
-script:
-- docker --version
-- docker build -t miketrout/skills-service .
-- echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
-- docker push miketrout/skills-service
+jobs:
+  include:
+    - stage: test
+      language: golang
+      script:
+      - go test --test.v
+    - stage: build docker image
+      script:
+      - docker --version
+      - docker build -t miketrout/skills-service .
+      - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+      - docker push miketrout/skills-service
 
 deploy:
   provider: script
