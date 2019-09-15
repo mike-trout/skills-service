@@ -15,6 +15,7 @@ jobs:
       script:
       - go version
       - go mod download
+      - go mod verify
       - go test --test.v
     - stage: build
       name: "Build Docker Image"
