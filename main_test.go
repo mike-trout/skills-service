@@ -11,7 +11,7 @@ import (
 )
 
 func TestGetAllSkills(t *testing.T) {
-	req, _ := http.NewRequest("GET", "/skills", nil)
+	req, _ := http.NewRequest("GET", "/", nil)
 	resp := executeRequest(req)
 
 	checkResponseCode(t, http.StatusOK, resp.Code)
@@ -25,7 +25,7 @@ func TestGetAllSkills(t *testing.T) {
 }
 
 func TestGetSingleSkill(t *testing.T) {
-	req, _ := http.NewRequest("GET", "/skills/1", nil)
+	req, _ := http.NewRequest("GET", "/1", nil)
 	resp := executeRequest(req)
 
 	checkResponseCode(t, http.StatusOK, resp.Code)
@@ -39,7 +39,7 @@ func TestGetSingleSkill(t *testing.T) {
 }
 
 func TestGetNonExistentSkill(t *testing.T) {
-	req, _ := http.NewRequest("GET", "/skills/0", nil)
+	req, _ := http.NewRequest("GET", "/0", nil)
 	resp := executeRequest(req)
 
 	checkResponseCode(t, http.StatusInternalServerError, resp.Code)

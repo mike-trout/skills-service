@@ -28,8 +28,8 @@ func (a *App) Run(addr string) {
 }
 
 func (a *App) initialiseRoutes() {
-	a.Router.HandleFunc("/skills", a.getSkills).Methods("GET")
-	a.Router.HandleFunc("/skills/{id:[0-9]+}", a.getSkill).Methods("GET")
+	a.Router.HandleFunc("/", a.getSkills).Methods("GET")
+	a.Router.HandleFunc("/{id:[0-9]+}", a.getSkill).Methods("GET")
 }
 
 func (a *App) getSkills(w http.ResponseWriter, r *http.Request) {
