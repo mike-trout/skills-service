@@ -18,7 +18,7 @@ type App struct {
 
 // Initialise - Initialise the application
 func (a *App) Initialise() {
-	a.Router = mux.NewRouter() // .StrictSlash(true)
+	a.Router = mux.NewRouter()
 	a.initialiseRoutes()
 }
 
