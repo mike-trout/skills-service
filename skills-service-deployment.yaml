@@ -26,13 +26,13 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 50002
+              port: http
             initialDelaySeconds: 5
             periodSeconds: 15
           readinessProbe:
             httpGet:
               path: /
-              port: 50002
+              port: htto
             initialDelaySeconds: 5
             periodSeconds: 15
           resources:
@@ -43,4 +43,5 @@ spec:
               memory: 20Mi
               cpu: 50m
           ports:
-            - containerPort: 50002
+            - name: http
+              containerPort: 50002
