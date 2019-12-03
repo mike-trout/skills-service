@@ -26,6 +26,7 @@ var Skills = []Skill{
 	Skill{ID: 9, Name: "React", Level: 5},
 	Skill{ID: 10, Name: "Docker", Level: 7},
 	Skill{ID: 11, Name: "Kubernetes", Level: 6},
+	Skill{ID: 12, Name: "AWS", Level: 5},
 }
 
 func getSkills() ([]Skill, error) {
