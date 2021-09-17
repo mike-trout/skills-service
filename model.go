@@ -17,16 +17,17 @@ type Skill struct {
 var Skills = []Skill{
 	{ID: 1, Name: "JavaScript", Level: 9},
 	{ID: 2, Name: "React", Level: 8},
-	{ID: 3, Name: "Java", Level: 7},
-	{ID: 4, Name: "C#", Level: 6},
-	{ID: 5, Name: "Go", Level: 3},
-	{ID: 6, Name: "HTML", Level: 9},
-	{ID: 7, Name: "CSS", Level: 8},
-	{ID: 8, Name: "AWS", Level: 7},
-	{ID: 9, Name: "Kubernetes", Level: 8},
-	{ID: 10, Name: "Docker", Level: 8},
-	{ID: 11, Name: "Natural", Level: 10},
-	{ID: 12, Name: "NaturalONE", Level: 10},
+	{ID: 3, Name: "WebdriverIO", Level: 8},
+	{ID: 4, Name: "Java", Level: 7},
+	{ID: 5, Name: "C#", Level: 6},
+	{ID: 6, Name: "Go", Level: 3},
+	{ID: 7, Name: "HTML", Level: 9},
+	{ID: 8, Name: "CSS", Level: 8},
+	{ID: 9, Name: "AWS", Level: 7},
+	{ID: 10, Name: "Kubernetes", Level: 8},
+	{ID: 11, Name: "Docker", Level: 9},
+	{ID: 12, Name: "Natural", Level: 10},
+	{ID: 13, Name: "NaturalONE", Level: 10},
 }
 
 func getSkills() ([]Skill, error) {
