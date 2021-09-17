@@ -15,18 +15,18 @@ type Skill struct {
 
 // Skills - global var containing all skills
 var Skills = []Skill{
-	{ID: 3, Name: "JavaScript", Level: 9},
-	{ID: 9, Name: "React", Level: 8},
-	{ID: 4, Name: "Java", Level: 7},
-	{ID: 5, Name: "C#", Level: 6},
-	{ID: 6, Name: "Go", Level: 3},
-	{ID: 7, Name: "HTML", Level: 9},
-	{ID: 8, Name: "CSS", Level: 8},
-	{ID: 12, Name: "AWS", Level: 7},
-	{ID: 11, Name: "Kubernetes", Level: 8},
+	{ID: 1, Name: "JavaScript", Level: 9},
+	{ID: 2, Name: "React", Level: 8},
+	{ID: 3, Name: "Java", Level: 7},
+	{ID: 4, Name: "C#", Level: 6},
+	{ID: 5, Name: "Go", Level: 3},
+	{ID: 6, Name: "HTML", Level: 9},
+	{ID: 7, Name: "CSS", Level: 8},
+	{ID: 8, Name: "AWS", Level: 7},
+	{ID: 9, Name: "Kubernetes", Level: 8},
 	{ID: 10, Name: "Docker", Level: 8},
-	{ID: 1, Name: "Natural", Level: 10},
-	{ID: 2, Name: "NaturalONE", Level: 10},
+	{ID: 11, Name: "Natural", Level: 10},
+	{ID: 12, Name: "NaturalONE", Level: 10},
 }
 
 func getSkills() ([]Skill, error) {
